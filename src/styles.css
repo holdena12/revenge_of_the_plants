@@ -40,12 +40,15 @@
 
 }
 .text{
+  display: flex;
+  justify-content: center;
   background-color: #CAC4CE;
   color: #242038;
   padding: 0.5em;
   margin: 0.5em;
   border-radius: 0.25em;
 }
+
 .center{
   display: flex;
   justify-content: center;
@@ -55,4 +58,16 @@
 }
 .number{
   padding: -1em;
+}
+.log{
+  padding: 1em;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  margin: 0.5em;
+  color: #242038;
+  background-color: #CAC4CE;
+  border-radius: 0.5em;
+  font-size: 1em;
+  
 }
