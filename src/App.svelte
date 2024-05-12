@@ -4,8 +4,7 @@
   let growthPerSecond = 0;
   let leaves = 0;
   let soldLeaves = 0;
-
-
+ 
   class Task {
     unlocked = true
     name = "";
@@ -68,15 +67,18 @@
 
  
     incrementProgress() {
-
-      
-      if (this.selected == false || power < this.cost) {
-        this.amountToGoUp = 0;
-      } else {
-        if(this.progress == 1){
+      if(this.progress == 1){
           power -= this.cost
           this.amountToGoUp = this.ogAmountToGoUp
         }
+        if(power < this.cost){
+          isReset()
+        }
+      
+      if (this.selected == false) {
+        this.amountToGoUp = 0;
+      } else {
+       
         this.progress += this.amountToGoUp;
      
         this.progress = this.progress;
@@ -96,6 +98,8 @@
       }
     }
   }
+  
+
 function isUnlocked(){
   tasks.forEach(task => {
     if(task.unlockHeight>= plantHeight)    return task.unlocked = true
@@ -235,11 +239,96 @@ function isUnlocked(){
                 5,
                 "b",
                 0,
-                50,
+                30,
                 4,
                 "Collecting bees that will bring sunlight to your plant to help it grow faster, cost per bee 50 power.",
               ),
             );
+            if (tasks.length <= 3) {
+  if (plantHeight >= 100) {
+    document.getElementById("log").innerText +=
+      "\n Log: You have unlocked a new kind of bee";
+    tasks.push(
+      new Task(
+        "2",
+        "Pollination Bees",
+        0.25,
+        3,
+        5,
+        "b",
+        0,
+        100,
+        6,
+        "Pollination bees help increase the yield of your plant's fruits and flowers. Cost per bee: 100 power."
+      )
+    );
+  }
+}
+
+
+if (tasks.length <= 4) {
+  if (plantHeight >= 300) {
+    document.getElementById("log").innerText +=
+      "\n Log: You have unlocked a new kind of bee";
+    tasks.push(
+      new Task(
+        "2",
+        "Guardian Bees",
+        0.25,
+        3,
+        5,
+        "b",
+        0,
+        300,
+        10,
+        "Guardian bees protect your plant from pests and diseases, ensuring its health. Cost per bee: 300 power."
+      )
+    );
+  }
+}
+
+if (tasks.length <= 5) {
+  if (plantHeight >= 400) {
+    document.getElementById("log").innerText +=
+      "\n Log: You have unlocked a new kind of bee";
+    tasks.push(
+      new Task(
+        "2",
+        "Harvesting Bees",
+        0.25,
+        3,
+        5,
+        "b",
+        0,
+        400,
+        12,
+        "Harvesting bees help gather ripe fruits and flowers from your plant. Cost per bee: 400 power."
+      )
+    );
+  }
+}
+
+if (tasks.length <= 6) {
+  if (plantHeight >= 500) {
+    document.getElementById("log").innerText +=
+      "\n Log: You have unlocked a new kind of bee";
+    tasks.push(
+      new Task(
+        "2",
+        "Nectar Bees",
+        0.25,
+        3,
+        5,
+        "b",
+        0,
+        500,
+        14,
+        "Nectar bees enhance the sweetness and flavor of your plant's fruits and flowers. Cost per bee: 500 power."
+      )
+    );
+  }
+}
+
             
             tasks = tasks;
           }
@@ -298,6 +387,5 @@ function isUnlocked(){
   >Sell leaves
 </button>
 <div class="log" id="log">
-  <p>Log: Started the game</p>
-  <p>Log: Do not run out of power it will reset you</p>
+<p>Log: Started the game <br> Log: Do not run out of power it will reset you</p>
 </div>
