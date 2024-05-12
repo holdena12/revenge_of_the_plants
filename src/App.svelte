@@ -158,40 +158,12 @@ function isUnlocked(){
       "Collecting bees to get water for your plant, copsts 5 power per bee.",
     ),
   );
-  let added10x = false
-  let added100x = false
+
   setInterval(function () {
     
-    if(growthPerSecond >= 50) {
-      if(added10x == false) {
+ 
       
-      added10x = true
-      document.getElementById("buttonsDiv").innerHTML += `<button
-  on:click={() => {
-    if (soldLeaves <= leaves) {
-      soldLeaves += 10;
-      sellLeaves();
-    }
-  }}
-  title={"Sell leaves to increase your power, costs ten plant height."}
-  class="button"
-  >Sell leaves times 10
-</button>`}}
-if(growthPerSecond >= 100) {
-      if(added100x == false) {
-      
-      added10x = true
-      document.getElementById("buttonsDiv").innerHTML += `<button
-  on:click={() => {
-    if (soldLeaves <= leaves) {
-      soldLeaves += 100;
-      sellLeaves();
-    }
-  }}
-  title={"Sell leaves to increase your power, costs ten plant height."}
-  class="button"
-  >Sell leaves times 100
-</button>`}}
+
       
     
     tasks.forEach((task) => {
