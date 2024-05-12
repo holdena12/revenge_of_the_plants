@@ -158,7 +158,42 @@ function isUnlocked(){
       "Collecting bees to get water for your plant, copsts 5 power per bee.",
     ),
   );
+  let added10x = false
+  let added100x = false
   setInterval(function () {
+    
+    if(growthPerSecond >= 50) {
+      if(added10x == false) {
+      
+      added10x = true
+      document.getElementById("buttonsDiv").innerHTML += `<button
+  on:click={() => {
+    if (soldLeaves <= leaves) {
+      soldLeaves += 10;
+      sellLeaves();
+    }
+  }}
+  title={"Sell leaves to increase your power, costs ten plant height."}
+  class="button"
+  >Sell leaves times 10
+</button>`}}
+if(growthPerSecond >= 100) {
+      if(added100x == false) {
+      
+      added10x = true
+      document.getElementById("buttonsDiv").innerHTML += `<button
+  on:click={() => {
+    if (soldLeaves <= leaves) {
+      soldLeaves += 100;
+      sellLeaves();
+    }
+  }}
+  title={"Sell leaves to increase your power, costs ten plant height."}
+  class="button"
+  >Sell leaves times 100
+</button>`}}
+      
+    
     tasks.forEach((task) => {
       plantHeight += (task.gps / 4) * task.completeions;
       growthPerSecond = findGrowthPerSecond();
@@ -239,11 +274,11 @@ function isUnlocked(){
                 5,
                 "b",
                 0,
-                30,
+                50,
                 4,
                 "Collecting bees that will bring sunlight to your plant to help it grow faster, cost per bee 50 power.",
               ),
-            );
+            );}}
             if (tasks.length <= 3) {
   if (plantHeight >= 100) {
     document.getElementById("log").innerText +=
@@ -261,8 +296,8 @@ function isUnlocked(){
         6,
         "Pollination bees help increase the yield of your plant's fruits and flowers. Cost per bee: 100 power."
       )
-    );
-  }
+    );}
+  
 }
 
 
@@ -331,8 +366,8 @@ if (tasks.length <= 6) {
 
             
             tasks = tasks;
-          }
-        }
+          
+        
      
         if (task.isSelected()) {
           task.incrementProgress();
@@ -374,7 +409,7 @@ if (tasks.length <= 6) {
     </div>
   </button>
 {/each}
-
+<div id="buttonsDiv">
 <button
   on:click={() => {
     if (soldLeaves <= leaves) {
@@ -384,8 +419,8 @@ if (tasks.length <= 6) {
   }}
   title={"Sell leaves to increase your power, costs ten plant height."}
   class="button"
-  >Sell leaves
-</button>
+  >Sell leaves 
+</button> </div>
 <div class="log" id="log">
 <p>Log: Started the game <br> Log: Do not run out of power it will reset you</p>
 </div>
