@@ -7,6 +7,8 @@
     border-color:#725AC1;
     border-radius: 0.5em;
     color: #242038;
+    display: block;
+    transition: 0.2s;
 
 }
 :root{
@@ -71,3 +73,79 @@
   font-size: 1em;
   
 }
+.leaveButton{
+
+  padding:0.25em;
+  font-size: 1.5em;
+  background-color: #725AC1;
+  border-style: solid;
+  border-color:#725AC1;
+  border-radius: 0.5em;
+  color: #242038;
+  transition: 0.2s;
+  margin: 0.5em;
+
+
+}
+.buttonBlock{
+  display: block;
+}
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color:transparent;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  z-index: 1000; /* Ensure the bar stays on top of other content */
+}
+
+.top-bar-button {
+  display: inline-block;
+  margin: 0 10px; /* Add margin between buttons */
+  padding: 5px 10px; /* Add padding to buttons */
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.content {
+  padding-top: 30px; /* Adjust padding-top to make space for the fixed top bar */
+}
+
+
+.top-bar-button {
+  margin: 0 10px; /* Add margin between buttons */
+  padding: 5px 10px; /* Add padding to buttons */
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.content {
+  padding-top: 17em; /* Adjust padding-top to make space for the fixed top bar */
+}
+.button:hover{
+  background-color: #8871d5;
+  font-size: 1.75em;
+  border-color:#8871d5 ;
+}
+.leaveButton:hover{
+  background-color: #8871d5;
+  font-size: 1.75em;
+  border-color:#8871d5 ;
+
+}
+.button.button:click{
+  font-size: 1.5em;
+  background-color: #725AC1;
+  border-color: #725AC1;
+}
+
+
+
