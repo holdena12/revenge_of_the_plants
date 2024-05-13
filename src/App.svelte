@@ -1,6 +1,6 @@
 <script>
   let plantHeight = 0;
-  let power = 50;
+  let power = 0;
   let growthPerSecond = 0;
   let leaves = 0;
   let soldLeaves = 0;
@@ -96,7 +96,7 @@
         // Reset progress and change style instantly after reaching 100%
         if (this.progress >= 100) {
           this.progress = 0;
-          let audio = new Audio ("696660__ajgrf__wet-plunger-click.wav")
+          let audio = new Audio("696660__ajgrf__wet-plunger-click.wav");
 
           this.completeions++;
           this.completeions = this.completeions;
@@ -163,9 +163,6 @@
   );
 
   setInterval(function () {
-    if (growthPerSecond >= 50) unhide("sellLeaves10");
-    if (growthPerSecond >= 200) unhide("sellLeaves100");
-
     tasks.forEach((task) => {
       plantHeight += (task.gps / 4) * task.completeions;
       growthPerSecond = findGrowthPerSecond();
@@ -448,10 +445,33 @@
       });
     }
   }, 10);
+  let ruleClicked = false;
+
 </script>
 
+<button
+  class="rulesButton"
+
+  on:click={() => {
+    ruleClicked = !ruleClicked;
+    if (ruleClicked == true) {
+      unhide("hiddenRules");
+
+    } else {
+      hide("hiddenRules");
+    }
+  }}
+  id="rules">Rules</button
+>
+    <p class="hidden rulesText" id="hiddenRules">
+      If you run out of power you will be completely reset. <br /> if you do not
+      have enough power to buy something again after you buy it you will be completely
+      reset<br/> for example if I have 50 power and I buy somthing that costs 30 power
+      I will reset<br/> if I have 60 power I will not be reset.
+    </p>
 <div class="center">
   <div class="top-bar">
+
     <div class="top-bar-button">
       <button
         id="sellLeaves"
@@ -468,25 +488,25 @@
       <button
         id="sellLeaves10"
         on:click={() => {
-          if (soldLeaves <= leaves) {
+          if (plantHeight - 100 >= 0) {
             soldLeaves += 10;
             sellLeaves();
           }
         }}
         title={"Sell leaves to increase your power, costs ten plant height."}
-        class="leaveButton hidden"
+        class="leaveButton"
         >Sell leaves 10
       </button>
       <button
         id="sellLeaves100"
         on:click={() => {
-          if (soldLeaves <= leaves) {
+          if (plantHeight - 1000 >= 0) {
             soldLeaves += 100;
             sellLeaves();
           }
         }}
         title={"Sell leaves to increase your power, costs ten plant height."}
-        class="leaveButton hidden"
+        class="leaveButton"
         >Sell leaves 100
       </button>
       <p class="text" style="font-size: 1.5em;">Power: {power}</p>
@@ -502,34 +522,34 @@
   </div>
 </div>
 <div class="content">
-{#each tasks as task}
-  <!-- Tooltip will appear when hovering over the button -->
-  <div class="buttonBlock">
-    <button
-      class="button"
-      style="display: block;"
-      on:click={function () {
-        task.flipSelected();
-      }}
-      title={task.toolTipText}
-    >
-      <p>{task.completeions}</p>
-      {task.name}
-      <div class="outer">
-        <div
-          class="inside"
-          id={task.id}
-          style="width: {task.getProgress()}%"
-        ></div>
-      </div>
-    </button>
-  </div>
-{/each}
+  {#each tasks as task}
+    <!-- Tooltip will appear when hovering over the button -->
+    <div class="buttonBlock">
+      <button
+        class="button"
+        style="display: block;"
+        on:click={function () {
+          task.flipSelected();
+        }}
+        title={task.toolTipText}
+      >
+        <p>{task.completeions}</p>
+        {task.name}
+        <div class="outer">
+          <div
+            class="inside"
+            id={task.id}
+            style="width: {task.getProgress()}%"
+          ></div>
+        </div>
+      </button>
+    </div>
+  {/each}
 
-<div class="log" id="log">
-  <p>
-    Log: Started the game <br /> Log: Do not run out of power it will reset you
-  </p>
-</div>
+  <div class="log" id="log">
+    <p>
+      Log: Started the game <br /> Log: Do not run out of power it will reset you
+    </p>
+  </div>
 </div>
 <audio id="complete" src="public/696660__ajgrf__wet-plunger-click.wav"></audio>
