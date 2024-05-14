@@ -468,6 +468,7 @@
       have enough power to buy something again after you buy it you will be completely
       reset<br/> for example if I have 50 power and I buy somthing that costs 30 power
       I will reset<br/> if I have 60 power I will not be reset.
+      The first time you create a bee you should have 3 time the price of it in power.
     </p>
 <div class="center">
   <div class="top-bar">
@@ -477,7 +478,7 @@
         id="sellLeaves"
         on:click={() => {
           if (soldLeaves <= leaves) {
-            soldLeaves += 1;
+            soldLeaves += 0.1;
             sellLeaves();
           }
         }}
@@ -495,7 +496,7 @@
         }}
         title={"Sell leaves to increase your power, costs ten plant height."}
         class="leaveButton"
-        >Sell leaves 10
+        >Sell leaves 100
       </button>
       <button
         id="sellLeaves100"
@@ -507,7 +508,7 @@
         }}
         title={"Sell leaves to increase your power, costs ten plant height."}
         class="leaveButton"
-        >Sell leaves 100
+        >Sell leaves 1000
       </button>
       <p class="text" style="font-size: 1.5em;">Power: {power}</p>
       <div>
