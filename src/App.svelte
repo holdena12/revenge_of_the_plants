@@ -23,7 +23,7 @@
     unlocked = true;
     name = "";
     amountToGoUp = 1;
-    progress = 0;
+    progress = 0.000001;
     selected = false;
     id = "";
     turns = 0;
@@ -78,14 +78,17 @@
     }
 
     incrementProgress() {
-      if (this.progress == 1) {
+      if (this.progress == 0) {
         power -= this.cost;
         this.amountToGoUp = this.ogAmountToGoUp;
       }
-      if (power < this.cost) {
+      if (power < 0) {
         isReset();
       }
-
+      if (this.progress == 75) {
+        let audio = new Audio("696660__ajgrf__wet-plunger-click.wav");
+        audio.play();
+      }
       if (this.selected == false) {
         this.amountToGoUp = 0;
       } else {
@@ -96,7 +99,6 @@
         // Reset progress and change style instantly after reaching 100%
         if (this.progress >= 100) {
           this.progress = 0;
-          let audio = new Audio("696660__ajgrf__wet-plunger-click.wav");
 
           this.completeions++;
           this.completeions = this.completeions;
@@ -135,7 +137,7 @@
         0,
         5,
         0.2,
-        "Collecting bees to get water for your plant, copsts 5 power per bee.",
+        "Collecting bees to get water for your plant, costs 5 power per bee.",
       ),
     );
     isUnlocked();
@@ -446,39 +448,35 @@
     }
   }, 10);
   let ruleClicked = false;
-
 </script>
 
 <button
   class="rulesButton"
-
   on:click={() => {
     ruleClicked = !ruleClicked;
     if (ruleClicked == true) {
       unhide("hiddenRules");
-
     } else {
       hide("hiddenRules");
     }
   }}
   id="rules">Rules</button
 >
-    <p class="hidden rulesText" id="hiddenRules">
-      If you run out of power you will be completely reset. <br /> if you do not
-      have enough power to buy something again after you buy it you will be completely
-      reset<br/> for example if I have 50 power and I buy somthing that costs 30 power
-      I will reset<br/> if I have 60 power I will not be reset.
-      The first time you create a bee you should have 3 time the price of it in power.
-    </p>
+<p class="hidden rulesText" id="hiddenRules">
+  If you run out of power you will be completely reset. <br /> if you do not
+  have enough power to buy something again after you buy it you will be
+  completely reset<br /> for example if I have 50 power and I buy somthing that
+  costs 30 power I will reset<br /> if I have 60 power I will not be reset. The first
+  time you create a bee you should have 3 time the price of it in power.
+</p>
 <div class="center">
   <div class="top-bar">
-
     <div class="top-bar-button">
       <button
         id="sellLeaves"
         on:click={() => {
           if (soldLeaves <= leaves) {
-            soldLeaves += 0.1;
+            soldLeaves += 1;
             sellLeaves();
           }
         }}
@@ -510,7 +508,7 @@
         class="leaveButton"
         >Sell leaves 1000
       </button>
-      <p class="text" style="font-size: 1.5em;">Power: {power}</p>
+      <p class="text" style="font-size: 1.5em;">Power: {power.toFixed(2)}</p>
       <div>
         <p class="text" style="font-size: 1.5em;">
           Plant height: {plantHeight.toFixed(2)}
@@ -554,3 +552,172 @@
   </div>
 </div>
 <audio id="complete" src="public/696660__ajgrf__wet-plunger-click.wav"></audio>
+<style>
+.button{
+  margin: 1em;
+  padding:0.5em;
+  font-size: 25px;
+  background-color: #725AC1;
+  border-style: solid;
+  border-color:#725AC1;
+  border-radius: 0.5em;
+  color: #242038;
+  display: block;
+  transition: 0.2s;
+
+}
+.rulesButton{
+margin-left: 54em;
+padding:0.5em;
+font-size: 25px;
+background-color: #725AC1;
+border-style: solid;
+border-color:#725AC1;
+border-radius: 0.5em;
+color: #242038;
+display: block;
+transition: 0.2s;
+
+}
+:root{
+  background-color: #242038;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.outer{
+  background-color: #333333;
+  width: 20vw;
+  height: 10px;
+border-radius: 0.5em;
+
+
+  border-style: none;
+
+}
+.inside{
+border-radius: 0.5em;
+  height: 10px;
+background-color: #8D86C9;
+
+
+
+}
+
+.text{
+display: block;
+background-color: #CAC4CE;
+color: #242038;
+padding: 0.5em;
+margin: 0.5em;
+border-radius: 0.25em;
+
+}
+.rulesText {
+display: block;
+background-color: #333333;
+color: #CAC4CE;
+padding: 0.5em;
+margin: 0.5em;
+border-radius: 0.25em;
+position: relative; /* or absolute, or fixed */
+z-index: 2000;
+font-size: 1.5em;
+}
+
+.center{
+display: flex;
+justify-content: center;
+}
+.hidden{
+display: none;
+}
+
+.log{
+padding: 1em;
+text-align: left;
+display: flex;
+justify-content: center;
+margin: 0.5em;
+color: #242038;
+background-color: #CAC4CE;
+border-radius: 0.5em;
+font-size: 1em;
+
+}
+.leaveButton{
+
+padding:0.25em;
+font-size: 1.5em;
+background-color: #725AC1;
+border-style: solid;
+border-color:#725AC1;
+border-radius: 0.5em;
+color: #242038;
+transition: 0.2s;
+margin: 0.5em;
+
+
+}
+.buttonBlock{
+display: block;
+}
+.top-bar {
+position: fixed;
+top: 0;
+left: 0;
+background-color:transparent;
+color: white;
+padding: 10px 0;
+text-align: center;
+z-index: 1000; /* Ensure the bar stays on top of other content */
+}
+
+.top-bar-button {
+display: inline-block;
+margin: 0 10px; /* Add margin between buttons */
+padding: 5px 10px; /* Add padding to buttons */
+background-color: #555;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.content {
+padding-top: 30px; /* Adjust padding-top to make space for the fixed top bar */
+}
+
+
+.top-bar-button {
+margin: 0 10px; /* Add margin between buttons */
+padding: 5px 10px; /* Add padding to buttons */
+background-color: transparent;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.content {
+padding-top: 17em; /* Adjust padding-top to make space for the fixed top bar */
+}
+.button:hover{
+background-color: #8871d5;
+font-size: 1.75em;
+border-color:#8871d5 ;
+}
+.leaveButton:hover{
+background-color: #8871d5;
+font-size: 1.75em;
+border-color:#8871d5 ;
+
+}
+.button.button:click{
+font-size: 1.5em;
+background-color: #725AC1;
+border-color: #725AC1;
+}
+
+
+
+
+</style>
