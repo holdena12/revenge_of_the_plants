@@ -136,7 +136,7 @@
         "a",
         0,
         5,
-        0.2,
+        0.1,
         "Collecting bees to get water for your plant, costs 5 power per bee.",
       ),
     );
@@ -159,7 +159,7 @@
       "a",
       0,
       5,
-      0.2,
+      0.1,
       "Collecting bees to get water for your plant, copsts 5 power per bee.",
     ),
   );
@@ -223,7 +223,7 @@
                 "b",
                 0,
                 10,
-                0.5,
+                0.25,
                 "Collecting bees that ferilize the soil for your plant, costs 10 power per bee.",
               ),
             );
@@ -245,7 +245,7 @@
                 "b",
                 0,
                 50,
-                4,
+                0.5,
                 "Collecting bees that will bring sunlight to your plant to help it grow faster, cost per bee 50 power.",
               ),
             );
@@ -265,7 +265,7 @@
                 "b",
                 0,
                 500,
-                6,
+                1,
                 "Pollination bees help increase the yield of your plant's fruits and flowers. Cost per bee: 500 power.",
               ),
             );
@@ -286,7 +286,7 @@
                 "b",
                 0,
                 1000,
-                10,
+                3,
                 "Guardian bees protect your plant from pests and diseases, ensuring its health. Cost per bee: 1000 power.",
               ),
             );
@@ -307,7 +307,7 @@
                 "b",
                 0,
                 5000,
-                12,
+                5,
                 "Harvesting bees help gather ripe fruits and flowers from your plant. Cost per bee: 5000 power.",
               ),
             );
@@ -328,7 +328,7 @@
                 "b",
                 0,
                 10000,
-                14,
+                9,
                 "Nectar bees enhance the sweetness and flavor of your plant's fruits and flowers. Cost per bee: 10000 power.",
               ),
             );
@@ -348,7 +348,7 @@
                 "b",
                 0,
                 30000,
-                16,
+                30,
                 "Pollen bees help in cross-pollination, resulting in stronger and healthier plants. Cost per bee: 30000 power.",
               ),
             );
@@ -369,7 +369,7 @@
                 "b",
                 0,
                 50000,
-                18,
+                75,
                 "Frost protection bees shield your plant from cold weather damage, ensuring its survival. Cost per bee: 50000 power.",
               ),
             );
@@ -390,7 +390,7 @@
                 "b",
                 0,
                 250000,
-                20,
+                100,
                 "Aroma bees enhance the fragrance of your plant's flowers, attracting beneficial insects. Cost per bee: 2500000 power.",
               ),
             );
@@ -411,7 +411,7 @@
                 "b",
                 0,
                 500000,
-                22,
+                220,
                 "Growth accelerator bees significantly boost the growth rate of your plant. Cost per bee: 500000 power.",
               ),
             );
@@ -432,7 +432,7 @@
                 "b",
                 0,
                 1000000,
-                24,
+                500,
                 "Rainbow bees bring vibrant colors to your plant, making it visually appealing. Cost per bee: 1000000 power.",
               ),
             );
